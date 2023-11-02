@@ -37,7 +37,7 @@ import tensorflow as tf
 from lpips import LPIPS
 import torch
 
-lpips_vgg = LPIPS(net="vgg").cuda()
+lpips_vgg = LPIPS(net="alex").cuda()
 ## --------------------------------- ##
 
 CENSUS_EPSILON = 1 / 256  # Guard against ground-truth quantization.
@@ -52,6 +52,8 @@ def main(unused_argv):
   tf.config.experimental.set_visible_devices([], 'TPU')
 
   config = configs.load_config(save_config=False)
+  #NOT USING WANDB
+  config.use_wandb = False
   if config.use_wandb:
     import wandb
     wandb.init(project=config.project, entity=config.entity, sync_tensorboard=True)
@@ -70,7 +72,7 @@ def main(unused_argv):
 
   def ssim_fn(x, y):
     ## ---- fix the SSIM issue default in regnerf's code ---- ##
-    return structural_similarity(x, y, multichannel=True, data_range=1.0)
+    return structural_similarity(x, y, multichannel=True, data_range=1.0, win_size=11, gaussian_weights=True, sigma=1.5, use_sample_covariance=False, K1=0.01, K2=0.03)
     ## ------------------------------------------------------ ##
   def lpips_fn(x, y):
     score = lpips_vgg(torch.from_numpy(np.array(x)).cuda().permute(2, 0, 1).unsqueeze(0), 

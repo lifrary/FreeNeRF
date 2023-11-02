@@ -1,6 +1,6 @@
 
-Config.expname = "dtu3-end-0.9"
-Config.checkpoint_dir = "out/dtu3-end-0.9/8"
+Config.expname = "myexp"
+Config.checkpoint_dir = "out/myexp"
 Config.dtu_scan = "scan8"
 
 # basic configs
@@ -34,8 +34,7 @@ Config.freq_reg = True
 Config.freq_reg_end = 39550  # int(0.9 * Config.max_steps)
 
 Config.occ_reg_loss_mult = 0.01
-# True -> False
-Config.occ_wb_prior = False
+Config.occ_wb_prior = True
 # regnerf techniques
 ## does not use regnerf techniques
 Config.load_random_rays = False

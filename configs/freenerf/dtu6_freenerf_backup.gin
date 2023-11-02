@@ -1,7 +1,7 @@
 
-Config.expname = "dtu3-end-0.9"
-Config.checkpoint_dir = "out/dtu3-end-0.9/8"
-Config.dtu_scan = "scan8"
+Config.expname = "myexp"
+Config.checkpoint_dir = "out/myexp"
+Config.dtu_scan = "scan21"
 
 # basic configs
 Config.data_dir = "data/Rectified/images"
@@ -24,18 +24,17 @@ Config.grad_max_val = 0.1
 
 
 # num_views dependent config
-Config.n_input_views = 3
-Config.max_steps = 43945
-Config.project = "dtu3"
+Config.n_input_views = 6
+Config.max_steps = 87891
+Config.project = "dtu6"
 
 
 # use trick or not
 Config.freq_reg = True
-Config.freq_reg_end = 39550  # int(0.9 * Config.max_steps)
+Config.freq_reg_end = 61524  # int(0.7 * Config.max_steps)
 
 Config.occ_reg_loss_mult = 0.01
-# True -> False
-Config.occ_wb_prior = False
+Config.occ_wb_prior = True
 # regnerf techniques
 ## does not use regnerf techniques
 Config.load_random_rays = False

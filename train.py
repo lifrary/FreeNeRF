@@ -256,6 +256,8 @@ def main(unused_argv):
 
   config = configs.load_config()
   ## ---- if using wandb ------- ##
+  #NOT USING WANDB
+  config.use_wandb = False
   if config.use_wandb:
     import wandb
     while wandb.init(

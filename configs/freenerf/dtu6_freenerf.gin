@@ -34,7 +34,8 @@ Config.freq_reg = True
 Config.freq_reg_end = 61524  # int(0.7 * Config.max_steps)
 
 Config.occ_reg_loss_mult = 0.01
-Config.occ_wb_prior = True
+#True -> False
+Config.occ_wb_prior = False
 # regnerf techniques
 ## does not use regnerf techniques
 Config.load_random_rays = False
